@@ -51,8 +51,7 @@ template<typename DataType> struct DeviceScalar { using type = void; };
 template<> struct DeviceScalar<double> { using type = double; };
 template<> struct DeviceScalar<std::complex<double>> { using type = dcomplex; };
 
-template<typename T> constexpr bool is_complex_scalar = false;
-template<> constexpr bool is_complex_scalar<dcomplex> = true;
+template<typename T> inline constexpr bool is_complex_scalar = std::is_same_v<T, dcomplex>;
 
 }  // namespace gpu
 }  // namespace fmm
